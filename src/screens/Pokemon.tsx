@@ -5,7 +5,6 @@ const Pokemon = () => {
   return (
     <View>
       <Text>We are on Pokemon...</Text>
-      <Text>Hello...</Text>
     </View>
   );
 };
