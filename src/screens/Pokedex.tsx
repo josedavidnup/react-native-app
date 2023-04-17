@@ -13,6 +13,7 @@ export interface PokemonDetail {
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState<Array<PokemonDetail>>([]);
+  const [nextUrl, setNextUrl] = useState('');
   // console.log('Pokemons--->', pokemons);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ const Pokedex = () => {
 
   const loadPokemons = async () => {
     try {
-      const response = await getPokemonsApi();
+      const response = await getPokemonsApi(nextUrl);
+      setNextUrl(response.next);
       const pokemonsArray: any = [];
       for (const pokemon of response.results) {
         const pokemonDetails = await getPokemonDetailByUrlApi(pokemon.url);
@@ -44,7 +46,11 @@ const Pokedex = () => {
 
   return (
     <SafeAreaView>
-      <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} />
+      <PokemonList
+        pokemons={pokemons}
+        loadPokemons={loadPokemons}
+        isNext={nextUrl}
+      />
     </SafeAreaView>
   );
 };

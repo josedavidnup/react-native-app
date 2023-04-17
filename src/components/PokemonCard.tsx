@@ -8,21 +8,22 @@ import {
 import React from 'react';
 import { PokemonDetail } from '../screens/Pokedex';
 import { getColorPokemonByType } from '../utils/getColorPokemonByType';
-
+import { useNavigation } from '@react-navigation/native';
 interface PokemonListProps {
   pokemon: PokemonDetail;
 }
 
 const PokemonCard: React.FC<PokemonListProps> = ({ pokemon }) => {
   const pokemonColor = getColorPokemonByType([pokemon.type]);
+  const navigation = useNavigation();
 
   const bgStyles = {
     backgroundColor: pokemonColor[0],
     ...styles.bgStyles,
   };
 
-  const goToPokemon = () => {
-    console.log(`Vamos al pokemon, ${pokemon.name}`);
+  const goToPokemon = (): void => {
+    navigation.navigate('Pokemon', { id: pokemon.id });
   };
 
   return (
@@ -31,7 +32,7 @@ const PokemonCard: React.FC<PokemonListProps> = ({ pokemon }) => {
         <View style={styles.spacing}>
           <View style={bgStyles}>
             <Text style={styles.number}>
-              #{`${pokemon.order}`.padStart(3, 0)}
+              {/* #{`${pokemon.order}`.padStart(3, 0)} */}#{`${pokemon.order}`}
             </Text>
             <Text style={styles.name}>{pokemon.name}</Text>
             <Image source={{ uri: pokemon.image }} style={styles.image} />

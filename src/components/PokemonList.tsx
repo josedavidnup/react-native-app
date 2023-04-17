@@ -1,4 +1,9 @@
-import { StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  Platform,
+} from 'react-native';
 import React from 'react';
 import { PokemonDetail } from '../screens/Pokedex';
 import PokemonCard from './PokemonCard';
@@ -6,11 +11,13 @@ import PokemonCard from './PokemonCard';
 interface PokemonListProps {
   pokemons: PokemonDetail[];
   loadPokemons: () => void;
+  isNext: any;
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({
   pokemons,
   loadPokemons,
+  isNext,
 }) => {
   //   console.log('PokemonList---->', pokemons);
 
@@ -26,14 +33,16 @@ const PokemonList: React.FC<PokemonListProps> = ({
       keyExtractor={(pokemon) => String(pokemon.id)}
       renderItem={({ item }) => <PokemonCard pokemon={item} />}
       contentContainerStyle={styles.flatListContentContainer}
-      onEndReached={loadMore}
+      onEndReached={isNext && loadMore}
       onEndReachedThreshold={0.1}
       ListFooterComponent={
-        <ActivityIndicator
-          size={'large'}
-          style={styles.spinner}
-          color={'#AEAEAE'}
-        />
+        isNext && (
+          <ActivityIndicator
+            size={'large'}
+            style={styles.spinner}
+            color={'#AEAEAE'}
+          />
+        )
       }
     />
   );
@@ -44,9 +53,11 @@ export default PokemonList;
 const styles = StyleSheet.create({
   flatListContentContainer: {
     paddingHorizontal: 5,
+    // marginTop: Platform.OS === 'android' ? 30 : 0,
   },
   spinner: {
     marginTop: 20,
     marginBottom: 60,
+    // marginBottom: Platform.OS === 'android' ? 30 : 0,
   },
 });
