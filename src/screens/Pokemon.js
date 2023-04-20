@@ -1,12 +1,22 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, ScrollView } from 'react-native';
+import Header from '../components/Pokemon/Header';
+import Type from '../components/Pokemon/Type';
 
-const Pokemon = () => {
+const Pokemon = ({ route }) => {
+  const { pokemon } = route.params;
+
+  if (!pokemon) return null;
   return (
-    <SafeAreaView>
-      <Text>Pokemon</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <Header
+        name={pokemon.name}
+        order={pokemon.order}
+        image={pokemon.image}
+        type={pokemon.type}
+      />
+      <Type type={pokemon.type} />
+    </ScrollView>
   );
 };
 

@@ -7,7 +7,6 @@ const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [nextUrl, setNextUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log('all pokemons', pokemons);
   useEffect(() => {
     (async () => {
       await loadPokemons();
@@ -25,7 +24,7 @@ const Pokedex = () => {
         pokemonsArray.push({
           id: pokemonDetails.id,
           name: pokemonDetails.name,
-          type: pokemonDetails.types[0].type.name,
+          type: pokemonDetails.types,
           order: pokemonDetails.order,
           image: pokemonDetails.sprites.other['official-artwork'].front_default,
         });
