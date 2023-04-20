@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import Header from '../components/Pokemon/Header';
 import Type from '../components/Pokemon/Type';
+import Stats from '../components/Pokemon/Stats';
 
 const Pokemon = ({ route }) => {
   const { pokemon } = route.params;
@@ -16,6 +17,7 @@ const Pokemon = ({ route }) => {
         type={pokemon.type}
       />
       <Type type={pokemon.type} />
+      <Stats stats={pokemon.stats} />
     </ScrollView>
   );
 };
