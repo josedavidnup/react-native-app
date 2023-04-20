@@ -7,7 +7,7 @@ const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [nextUrl, setNextUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(pokemons);
+  console.log('all pokemons', pokemons);
   useEffect(() => {
     (async () => {
       await loadPokemons();
