@@ -1,19 +1,19 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import FavoriteScreen from '../screens/Favorite';
 import AccountScreen from '../screens/Account';
 import { Image } from 'react-native';
 import PokedexNavigation from './PokedexNavigation';
+import FavoriteNavigation from './FavoriteNavigation';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
 const Navigation = () => {
   return (
-    <Navigator>
+    <Navigator initialRouteName='Pokedex'>
       <Screen
         name='Favorite'
-        component={FavoriteScreen}
+        component={FavoriteNavigation}
         options={{
           headerTitle: 'Favorite',
           headerTitleAlign: 'center',
