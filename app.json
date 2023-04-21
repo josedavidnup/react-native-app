@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Pokedex by José David",
-    "slug": "Pokedex by José David",
+    "name": "Pokedex-by-Jose-David",
+    "slug": "Pokedex-by-Jose-David",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#f00"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -24,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8145e2a2-5065-4143-8506-a13b3e0e419b"
+      }
     }
   }
 }
