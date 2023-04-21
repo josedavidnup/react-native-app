@@ -4,13 +4,16 @@ import Header from '../components/Pokemon/Header';
 import Type from '../components/Pokemon/Type';
 import Stats from '../components/Pokemon/Stats';
 import { FontAwesome } from '@expo/vector-icons';
+import Favorite from '../components/Pokemon/Favorite';
+import useAuth from '../hooks/useAuth';
 
 const Pokemon = ({ route: { params }, navigation }) => {
   const { pokemon } = params;
+  const { auth } = useAuth();
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => auth && <Favorite id={pokemon?.id} />,
       headerLeft: () => (
         <FontAwesome
           name='arrow-left'
