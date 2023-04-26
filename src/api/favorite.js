@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FAVORITE_STORAGE } from '../utils/constans';
 
-export async function getPokemonFavoriteApi() {
+export async function getDogFavoriteApi() {
   try {
     const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
     const responseJSON = JSON.parse(response);
@@ -11,9 +11,9 @@ export async function getPokemonFavoriteApi() {
   }
 }
 
-export async function addPokemonFavorite(id) {
+export async function addDogFavorite(id) {
   try {
-    const favorites = await getPokemonFavoriteApi();
+    const favorites = await getDogFavoriteApi();
     favorites.push(id);
     await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites));
   } catch (error) {
@@ -21,18 +21,18 @@ export async function addPokemonFavorite(id) {
   }
 }
 
-export async function isPokemonFavoriteApi(id) {
+export async function isDogFavoriteApi(id) {
   try {
-    const favorites = await getPokemonFavoriteApi();
+    const favorites = await getDogFavoriteApi();
     return favorites.includes(id);
   } catch (error) {
     throw error;
   }
 }
 
-export async function removePokemonFavoriteApi(id) {
+export async function removeDogFavoriteApi(id) {
   try {
-    const currentFavorites = await getPokemonFavoriteApi();
+    const currentFavorites = await getDogFavoriteApi();
     const index = currentFavorites.indexOf(id);
 
     const updatedFavorites = [

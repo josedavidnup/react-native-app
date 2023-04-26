@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import getColorByDogType from '../../utils/getColorByDogType';
 
 const Type = ({ type }) => {
   return (
@@ -12,7 +12,7 @@ const Type = ({ type }) => {
               key={index}
               style={{
                 ...styles.pill,
-                backgroundColor: getColorByPokemonType(item.type.name),
+                backgroundColor: getColorByDogType(item.type.name),
               }}
             >
               <Text style={{ textTransform: 'capitalize' }}>

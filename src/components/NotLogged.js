@@ -8,7 +8,7 @@ const NotLogged = () => {
   return (
     <View style={styles.content}>
       <Text style={styles.text}>
-        You should be logged to see your favorite pokemons
+        You should be logged to see your favorite dogs
       </Text>
       <Button
         title='Go to Login'

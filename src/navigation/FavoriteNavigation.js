@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FavoriteScreen from '../screens/Favorite';
-import PokemonScreen from '../screens/Pokemon';
+import DogScreen from '../screens/Dog';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -14,8 +14,8 @@ const FavoriteNavigation = () => {
         options={{ title: '', headerTransparent: true }}
       />
       <Screen
-        name='Pokemon'
-        component={PokemonScreen}
+        name='Dog'
+        component={DogScreen}
         options={{ title: '', headerTransparent: true }}
       />
     </Navigator>

@@ -1,25 +1,25 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PokedexScreen from '../screens/Pokedex';
-import PokemonScreen from '../screens/Pokemon';
+import DogsScreen from '../screens/Dogs';
+import DogScreen from '../screens/Dog';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-const PokedexNavigation = () => {
+const DogsNavigation = () => {
   return (
     <Navigator>
       <Screen
-        name='PokedexScreen'
-        component={PokedexScreen}
+        name='DogsScreen'
+        component={DogsScreen}
         options={{ title: '', headerTransparent: true }}
       />
       <Screen
-        name='Pokemon'
-        component={PokemonScreen}
+        name='Dog'
+        component={DogScreen}
         options={{ title: '', headerTransparent: true }}
       />
     </Navigator>
   );
 };
 
-export default PokedexNavigation;
+export default DogsNavigation;

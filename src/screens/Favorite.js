@@ -1,40 +1,39 @@
 import React, { useState, useCallback } from 'react';
-import { getPokemonFavoriteApi } from '../api/favorite';
+import { getDogFavoriteApi } from '../api/favorite';
 import useAuth from '../hooks/useAuth';
-import { getPokemonsDetailsApi } from '../api/pokemon';
-import PokemonList from '../components/PokemonList';
+import { getDogsDetailsApi } from '../api/dog';
+import DogList from '../components/DogList';
 import { useFocusEffect } from '@react-navigation/native';
 import NotLogged from '../components/NotLogged';
 
 const Favorite = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const [dogs, setDogs] = useState([]);
   const { auth } = useAuth();
 
   useFocusEffect(
     useCallback(() => {
       if (auth) {
         (async () => {
-          const response = await getPokemonFavoriteApi();
-          const pokemonsArray = [];
+          const response = await getDogFavoriteApi();
+          const dogsArray = [];
           for await (const id of response) {
-            const pokemonDetails = await getPokemonsDetailsApi(id);
-            pokemonsArray.push({
-              id: pokemonDetails.id,
-              name: pokemonDetails.name,
-              type: pokemonDetails.types,
-              order: pokemonDetails.order,
-              image:
-                pokemonDetails.sprites.other['official-artwork'].front_default,
-              stats: pokemonDetails.stats,
+            const dogDetails = await getDogsDetailsApi(id);
+            dogsArray.push({
+              id: dogDetails.id,
+              name: dogDetails.name,
+              type: dogDetails.types,
+              order: dogDetails.order,
+              image: dogDetails.sprites.other['official-artwork'].front_default,
+              stats: dogDetails.stats,
             });
           }
-          setPokemons([...pokemons, ...pokemonsArray]);
+          setDogs([...dogs, ...dogsArray]);
         })();
       }
     }, [auth])
   );
 
-  return !auth ? <NotLogged /> : <PokemonList pokemons={pokemons} />;
+  return !auth ? <NotLogged /> : <DogList dogs={dogs} />;
 };
 
 export default Favorite;

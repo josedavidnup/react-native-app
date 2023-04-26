@@ -5,20 +5,20 @@ import {
   ActivityIndicator,
   Platform,
 } from 'react-native';
-import PokemonCard from './PokemonCard';
+import DogCard from './DogCard';
 
-const PokemonList = ({ pokemons, loadPokemons, nextUrl, isLoading }) => {
+const DogList = ({ dogs, loadDogs, nextUrl, isLoading }) => {
   const loadMore = () => {
-    loadPokemons();
+    loadDogs();
   };
 
   return (
     <FlatList
-      data={pokemons}
+      data={dogs}
       numColumns={2}
       showsVerticalScrollIndicator={false}
-      keyExtractor={(pokemon) => String(pokemon.id)}
-      renderItem={({ item }) => <PokemonCard pokemon={item} />}
+      keyExtractor={(dog) => String(dog.id)}
+      renderItem={({ item }) => <DogCard dog={item} />}
       contentContainerStyle={styles.flatListContentContainer}
       onEndReached={nextUrl && loadMore}
       onEndReachedThreshold={0.1}
@@ -36,7 +36,7 @@ const PokemonList = ({ pokemons, loadPokemons, nextUrl, isLoading }) => {
   );
 };
 
-export default PokemonList;
+export default DogList;
 
 const styles = StyleSheet.create({
   flatListContentContainer: {

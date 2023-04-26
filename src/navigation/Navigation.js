@@ -3,14 +3,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 import AccountScreen from '../screens/Account';
 import { Image } from 'react-native';
-import PokedexNavigation from './PokedexNavigation';
+import DogsNavigation from './DogsNavigation';
 import FavoriteNavigation from './FavoriteNavigation';
 
 const { Screen, Navigator } = createBottomTabNavigator();
 
 const Navigation = () => {
   return (
-    <Navigator initialRouteName='Pokedex'>
+    <Navigator initialRouteName='Dogs'>
       <Screen
         name='Favorite'
         component={FavoriteNavigation}
@@ -26,13 +26,13 @@ const Navigation = () => {
         }}
       />
       <Screen
-        name='Pokedex'
-        component={PokedexNavigation}
+        name='Dogs'
+        component={DogsNavigation}
         options={{
           headerShown: false,
           headerTitleAlign: 'center',
           tabBarLabel: '',
-          tabBarIcon: () => renderPokeball(),
+          tabBarIcon: () => renderDog(),
         }}
       />
       <Screen
@@ -53,9 +53,9 @@ const Navigation = () => {
 
 export default Navigation;
 
-const renderPokeball = () => (
+const renderDog = () => (
   <Image
-    source={require('../assets/pokeball.png')}
+    source={require('../assets/dog.png')}
     style={{ width: 75, height: 75, top: -15 }}
   />
 );

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import {
-  addPokemonFavorite,
-  isPokemonFavoriteApi,
-  removePokemonFavoriteApi,
+  addDogFavorite,
+  isDogFavoriteApi,
+  removeDogFavoriteApi,
 } from '../../api/favorite';
 
 const Favorite = ({ id }) => {
@@ -13,7 +13,7 @@ const Favorite = ({ id }) => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await isPokemonFavoriteApi(id);
+        const response = await isDogFavoriteApi(id);
         setIsfavorite(response);
       } catch (error) {
         setIsfavorite(false);
@@ -27,7 +27,7 @@ const Favorite = ({ id }) => {
 
   const addFavorite = async () => {
     try {
-      await addPokemonFavorite(id);
+      await addDogFavorite(id);
       onReloadCheckFavorite();
     } catch (error) {
       console.log(error);
@@ -36,7 +36,7 @@ const Favorite = ({ id }) => {
 
   const removeFavorite = async () => {
     try {
-      await removePokemonFavoriteApi(id);
+      await removeDogFavoriteApi(id);
       onReloadCheckFavorite();
     } catch (error) {
       console.log(error);

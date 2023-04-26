@@ -1,28 +1,26 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
-import getColorByPokemonType from '../utils/getColorByPokemonType';
+import getColorByDogType from '../utils/getColorByDogType';
 import { useNavigation } from '@react-navigation/native';
 
-const PokemonCard = ({ pokemon }) => {
-  const pokemonColor = getColorByPokemonType(pokemon.type[0].type.name);
-  const bgStyle = { backgroundColor: pokemonColor, ...styles.bgStyles };
+const DogCard = ({ dog }) => {
+  const dogColor = getColorByDogType(dog.type[0].type.name);
+  const bgStyle = { backgroundColor: dogColor, ...styles.bgStyles };
   const navigation = useNavigation();
 
-  const goToPokemon = () => {
-    navigation.navigate('Pokemon', { pokemon });
+  const goToDog = () => {
+    navigation.navigate('Dog', { dog });
   };
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={goToPokemon}>
+      <Pressable onPress={goToDog}>
         <View style={styles.card}>
           <View style={styles.spacing}>
             <View style={bgStyle}>
-              <Text style={styles.number}>
-                #{`${pokemon.id}`.padStart(3, 0)}
-              </Text>
-              <Text style={styles.name}>{pokemon.name}</Text>
-              <Image source={{ uri: pokemon.image }} style={styles.image} />
+              <Text style={styles.number}>#{`${dog.id}`.padStart(3, 0)}</Text>
+              <Text style={styles.name}>{dog.name}</Text>
+              <Image source={{ uri: dog.image }} style={styles.image} />
             </View>
           </View>
         </View>
@@ -31,7 +29,7 @@ const PokemonCard = ({ pokemon }) => {
   );
 };
 
-export default PokemonCard;
+export default DogCard;
 
 const styles = StyleSheet.create({
   container: {

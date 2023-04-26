@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
-import getColorByPokemonType from '../../utils/getColorByPokemonType';
+import getColorByDogType from '../../utils/getColorByDogType';
 
 const Header = ({ name, order, type, image }) => {
-  const color = getColorByPokemonType(type[0].type.name);
+  const color = getColorByDogType(type[0].type.name);
   const bgStyle = { backgroundColor: color, ...styles.bgStyles };
   return (
     <>

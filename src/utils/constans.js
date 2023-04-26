@@ -1,9 +1,9 @@
 import { REACT_APP_API_POKEMON } from '@env';
-export const API_POKEMON = REACT_APP_API_POKEMON;
+export const API_DOGS = REACT_APP_API_DOGS;
 
 export const FAVORITE_STORAGE = 'favorites';
 
-export const POKEMON_TYPE_COLORS = {
+export const DOG_TYPE_COLORS = {
   normal: '#A8A878',
   fighting: '#C03028',
   flying: '#A890F0',

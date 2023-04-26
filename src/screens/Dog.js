@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import Header from '../components/Pokemon/Header';
-import Type from '../components/Pokemon/Type';
-import Stats from '../components/Pokemon/Stats';
+import Header from '../components/Dog/Header';
+import Type from '../components/Dog/Type';
+import Stats from '../components/Dog/Stats';
 import { FontAwesome } from '@expo/vector-icons';
-import Favorite from '../components/Pokemon/Favorite';
+import Favorite from '../components/Dog/Favorite';
 import useAuth from '../hooks/useAuth';
 
-const Pokemon = ({ route: { params }, navigation }) => {
-  const { pokemon } = params;
+const Dog = ({ route: { params }, navigation }) => {
+  const { dog } = params;
   const { auth } = useAuth();
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => auth && <Favorite id={pokemon?.id} />,
+      headerRight: () => auth && <Favorite id={dog?.id} />,
       headerLeft: () => (
         <FontAwesome
           name='arrow-left'
@@ -26,19 +26,19 @@ const Pokemon = ({ route: { params }, navigation }) => {
     });
   }, [navigation, params]);
 
-  if (!pokemon) return null;
+  if (!dog) return null;
   return (
     <ScrollView>
       <Header
-        name={pokemon.name}
-        order={pokemon.order}
-        image={pokemon.image}
-        type={pokemon.type}
+        name={dog.name}
+        order={dog.order}
+        image={dog.image}
+        type={dog.type}
       />
-      <Type type={pokemon.type} />
-      <Stats stats={pokemon.stats} />
+      <Type type={dog.type} />
+      <Stats stats={dog.stats} />
     </ScrollView>
   );
 };
 
-export default Pokemon;
+export default Dog;
